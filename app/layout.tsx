@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: "Higa Connect",
   description:
     "Share deep memories that won't be forgotten --> Golden batch of Higa Model Boarding School",
+  verification: {
+    google: "YvVK2FNPpKQOR9adMQNaJduxKRkGffGM7XmsFuXDaCg",
+  },
 };
 
 export default function RootLayout({
