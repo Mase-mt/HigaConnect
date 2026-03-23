@@ -1,6 +1,15 @@
 import clsx from "clsx";
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { posts } from "@/data";
 import { postPath } from "@/paths";
 const postsPage = () => {
@@ -57,27 +66,28 @@ const postsPage = () => {
     <div className="flex flex-1 flex-col gap-y-8">
       <div>
         <h2 className="text-3xl font-bold tracking-tight">Posts</h2>
-        <p className="text-sm text-muted-foreground">
+        <span className="text-sm text-muted-foreground">
           Explore posts and memories
-        </p>
+        </span>
       </div>
       <div className="flex flex-1 flex-col gap-y-4 items-center animate-fade-in">
         {posts.map((post) => (
-          <div
-            key={post.id}
-            className="w-full max-w-[420px] p-4 border border-slate-100 rounded-2xl"
-          >
-            <h3
-              className={clsx("text-lg", "truncate", "font-semibold", {
-                "text-green-500": post.status === "SUCCESS",
-              })}
-            >
-              {post.title}
-            </h3>
-            <p className="text-sm truncate text-slate-300">{post.content}</p>
-            <span>{POST_ICONS[post.status]}</span>
+          <Card key={post.id} className="w-full max-w-[420px]">
+            <CardHeader>
+            <CardTitle className="flex gap-x-2">
+              <span>{POST_ICONS[post.status]}</span>
+              <span className="truncate text-xl font-bold">{post.title}</span>
+            </CardTitle>
+            </CardHeader>
+            <CardContent>
+            <span className="line-clamp-3 whitespace-break-spaces text-sm">{post.content}</span>
+            </CardContent>
+            <CardFooter>
+              <Button asChild variant={'default'}>
             <Link href={postPath(post.id)}>View</Link>
-          </div>
+            </Button>
+            </CardFooter>
+          </Card>
         ))}
       </div>
     </div>
