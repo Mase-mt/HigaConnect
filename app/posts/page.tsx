@@ -1,6 +1,15 @@
 import clsx from "clsx";
+import Image from "next/image";
 import Link from "next/link";
 
+import {
+  Avatar,
+  AvatarBadge,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarGroupCount,
+  AvatarImage,
+} from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,6 +19,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { posts } from "@/data";
 import { postPath } from "@/paths";
 const postsPage = () => {
@@ -59,7 +69,7 @@ const postsPage = () => {
   );
   const POST_ICONS = {
     PENDING: <Pending />,
-    SUCCESS: <CheckIcon />,
+    SUCCESS: <CheckIcon/>,
     FAILED: <Failed />,
   };
   return (
@@ -70,22 +80,48 @@ const postsPage = () => {
           Explore posts and memories
         </span>
       </div>
+      <Separator />
       <div className="flex flex-1 flex-col gap-y-4 items-center animate-fade-in">
         {posts.map((post) => (
           <Card key={post.id} className="w-full max-w-[420px]">
             <CardHeader>
-            <CardTitle className="flex gap-x-2">
-              <span>{POST_ICONS[post.status]}</span>
-              <span className="truncate text-xl font-bold">{post.title}</span>
-            </CardTitle>
+              <div className="flex flex-1 gap-x-2 font-bold items-center">
+                <Avatar>
+                  <AvatarImage
+                    src="https://github.com/shadcn.png"
+                    alt="@shadcn"
+                    className="grayscale"
+                  />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+                <div className="flex flex-col justify-center">
+                  <span className="text-sky-900 font-black">{post.name}</span>
+                  <span className="text-sky-500 font-medium text-sm">
+                    {"@" + post.username}
+                  </span>
+                </div>
+                <span>{POST_ICONS[post.status]}</span>
+              </div>
+              <CardTitle className="flex gap-x-2">
+                <Image
+                  src="/Moj2.jpg"
+                  width={500} // Optional for static imports, but recommended
+                  height={500} // Optional for static imports, but recommended
+                  alt="Description of my image"
+                  className="p-y-2 rounded-xl"
+                />
+                <span className="truncate text-xl font-bold">{post.title}</span>
+              </CardTitle>
             </CardHeader>
             <CardContent>
-            <span className="line-clamp-3 whitespace-break-spaces text-sm">{post.content}</span>
+              <span className="line-clamp-3 whitespace-break-spaces text-sm">
+                {post.content}
+              </span>
             </CardContent>
             <CardFooter>
-              <Button asChild variant={'default'}>
-            <Link href={postPath(post.id)}>View</Link>
-            </Button>
+              <Button asChild variant={"default"}>
+                <Link href={postPath(post.id)}>View</Link>
+              </Button>
             </CardFooter>
           </Card>
         ))}

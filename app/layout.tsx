@@ -4,11 +4,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { home, postsPaths } from "@/paths";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,18 +37,29 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        "font-sans",
+        inter.variable,
+      )}
     >
       <body className="min-h-full flex flex-col">
         <nav className="supports-backdrop-blur:bg-background/60 fixed left-0 right-0 top-0 z-20 border-b bg-background/50 backdrop-blur w-full flex py-2.5 px-5 justify-between">
           <div>
-            <Button asChild variant={'outline'}>
-              <Link href={home()}>Home</Link>
+            <Button asChild variant={"ghost"}>
+              <Link href={home()}>
+                <h1 className="text-lg ">HigaConnect</h1>
+              </Link>
             </Button>
           </div>
           <div>
-            <Button asChild variant={'outline'}>
-              <Link href={postsPaths()}>Posts</Link>
+            <Button asChild variant={"outline"}>
+              <Link href={postsPaths()} className="text-lg">
+                Posts
+              </Link>
             </Button>
           </div>
         </nav>
