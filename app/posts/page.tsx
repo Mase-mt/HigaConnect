@@ -2,6 +2,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Heading } from "@/components/heading";
 import {
   Avatar,
   AvatarBadge,
@@ -69,18 +70,12 @@ const postsPage = () => {
   );
   const POST_ICONS = {
     PENDING: <Pending />,
-    SUCCESS: <CheckIcon/>,
+    SUCCESS: <CheckIcon />,
     FAILED: <Failed />,
   };
   return (
     <div className="flex flex-1 flex-col gap-y-8">
-      <div>
-        <h2 className="text-3xl font-bold tracking-tight">Posts</h2>
-        <span className="text-sm text-muted-foreground">
-          Explore posts and memories
-        </span>
-      </div>
-      <Separator />
+      <Heading title="Posts" description="Explore posts and memories"/>
       <div className="flex flex-1 flex-col gap-y-4 items-center animate-fade-in">
         {posts.map((post) => (
           <Card key={post.id} className="w-full max-w-[420px]">
@@ -102,14 +97,14 @@ const postsPage = () => {
                 </div>
                 <span>{POST_ICONS[post.status]}</span>
               </div>
+              <Image
+                src="/Moj2.jpg"
+                width={500} // Optional for static imports, but recommended
+                height={500} // Optional for static imports, but recommended
+                alt="Description of my image"
+                className="p-y-2 rounded-xl"
+              />
               <CardTitle className="flex gap-x-2">
-                <Image
-                  src="/Moj2.jpg"
-                  width={500} // Optional for static imports, but recommended
-                  height={500} // Optional for static imports, but recommended
-                  alt="Description of my image"
-                  className="p-y-2 rounded-xl"
-                />
                 <span className="truncate text-xl font-bold">{post.title}</span>
               </CardTitle>
             </CardHeader>

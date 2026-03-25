@@ -15,7 +15,7 @@ export const posts = [
     name:"Masamo Mathewos",
     username:"mase",
     title: "Second Post",
-    content: "This is the content of the second post.",
+    content: "This is the content of the second post. This is the content of the second post. This is the content of the second post. This is the content of the second post. This is the content of the second post.",
     status: "SUCCESS" as const
   },
   {
