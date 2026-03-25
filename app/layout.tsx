@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Higa Connect",
   description:
-    "Share deep memories that won't be forgotten --> Golden batch of Higa Model Boarding School",
+    "The official home of the Golden Batch of Higa — the second batch of Higa Model Boarding School. 121 friends, 4 years of memories, and a bond that never fades. Stay connected, relive moments, and keep the golden spirit alive.",
   verification: {
     google: "YvVK2FNPpKQOR9adMQNaJduxKRkGffGM7XmsFuXDaCg",
   },
@@ -45,7 +45,7 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col">
-        <Header/>
+        <Header />
         <main className="min-h-screen flex-1 overflow-y-auto overflow-x-hidden py-24 px-8 bg-secondary/20 flex flex-col">
           {children}
         </main>
