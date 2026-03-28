@@ -13,7 +13,7 @@ const Header = () => {
         <Button asChild variant={"ghost"}>
           <Link href={home()}>
             <Kanban size={64} color="#03EF62" strokeWidth={3} className="size-6"/>
-            <h1 className="text-lg font-semibold ml-2">HigaConnect</h1>
+            <h1 className="text-lg font-semibold ml-2 ">HigaConnect</h1>
           </Link>
         </Button>
       </div>
