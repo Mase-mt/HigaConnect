@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 
 import { Header } from "@/components/header";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -34,6 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
+    suppressHydrationWarning
       lang="en"
       className={cn(
         "h-full",
@@ -45,10 +47,12 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col">
-        <Header />
-        <main className="min-h-screen flex-1 overflow-y-auto overflow-x-hidden py-24 px-8 bg-secondary/20 flex flex-col">
-          {children}
-        </main>
+        <ThemeProvider>
+          <Header />
+          <main className="min-h-screen flex-1 overflow-y-auto overflow-x-hidden py-24 px-8 bg-secondary/20 flex flex-col">
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
