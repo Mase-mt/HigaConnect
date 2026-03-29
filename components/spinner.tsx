@@ -2,7 +2,7 @@ import { LoaderIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-interface SpinnerProps extends React.ComponentProps<"svg"> {
+interface SpinnerProps extends React.SVGProps<SVGSVGElement> {
   strokeWidth?: number;
 }
 
@@ -12,7 +12,7 @@ function Spinner({ className, strokeWidth = 2, ...props }: SpinnerProps) {
       role="status"
       aria-label="Loading"
       className={cn("size-8 animate-spin", className)}
-      strokeWidth={strokeWidth} // Explicitly pass as number
+      strokeWidth={strokeWidth} 
       {...props}
     />
   );
