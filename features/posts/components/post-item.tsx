@@ -51,13 +51,12 @@ const PostItem = ({ post, isDetail }: PostItemProps) => {
             <div className="flex flex-col justify-center">
               <span className="text-sky-900 font-black">{post.name}</span>
               <span className="text-sky-500 font-medium text-sm">
-                {"@" + post.username}
+                {"@" + post?.username}
               </span>
             </div>
-            <span>{POST_ICONS[post.status]}</span>
           </div>
           <Image
-            src="/Moj2.jpg"
+            src={post.imageUrl[0]}
             width={500} // Optional for static imports, but recommended
             height={500} // Optional for static imports, but recommended
             alt="Description of my image"

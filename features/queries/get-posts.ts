@@ -1,11 +1,9 @@
-import { posts } from "@/data";
+import { prisma } from "@/lib/prisma";
 
-import { Post } from "../posts/types";
-
-export const getPosts = async (): Promise<Post[]> => {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-
-  return new Promise((resolve) => {
-    resolve(posts);
+export const getPosts = async () => {
+  return await prisma.post.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
   });
 };

@@ -1,10 +1,9 @@
-import { posts } from "@/data";
+import { prisma } from "@/lib/prisma";
 
-import { Post } from "../posts/types";
-
-export const getPostById = async (postId: string): Promise<Post | null> => {
-  return new Promise((resolve) => {
-    const post = posts.find((post) => post.id === postId);
-    resolve(post || null);
+export const getPostById = async (postId: string) => {
+  return prisma.post.findUnique({
+    where: {
+      id: postId
+    }
   });
 };
