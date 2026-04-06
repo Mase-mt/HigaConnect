@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { LucideSquareArrowOutUpRight } from "lucide-react";
+import { LucideSquareArrowOutUpRight, LucideTrash } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,11 +12,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Post } from "@/lib/generated/prisma/client";
 import { postPath } from "@/paths";
 
-import { POST_ICONS } from "../constants";
-import { Post } from "../types";
-
+import { deletePost } from "../actions/delete-ticket";
 type PostItemProps = {
   post: Post;
   isDetail?: boolean;
@@ -29,6 +28,13 @@ const PostItem = ({ post, isDetail }: PostItemProps) => {
         <LucideSquareArrowOutUpRight className="size-4" />
       </Link>
     </Button>
+  );
+  const deleteButton = (
+    <form action={deletePost.bind(null, post.id)}>
+      <Button variant={"outline"} size={"icon-lg"}>
+        <LucideTrash className="size-4" />
+      </Button>
+    </form>
   );
   return (
     <div
@@ -84,7 +90,7 @@ const PostItem = ({ post, isDetail }: PostItemProps) => {
         </CardFooter>
       </Card>
       <div className="flex flex-col gap-y-4">
-        {isDetail ? null : detailButton}
+        {isDetail ? deleteButton : detailButton}
       </div>
     </div>
   );

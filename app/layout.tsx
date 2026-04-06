@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   title: "Higa Connect",
   description:
     "The official home of the Golden Batch of Higa — the second batch of Higa Model Boarding School. 121 friends, 4 years of memories, and a bond that never fades. Stay connected, relive moments, and keep the golden spirit alive.",
+    applicationName: "Higa",
   verification: {
     google: "YvVK2FNPpKQOR9adMQNaJduxKRkGffGM7XmsFuXDaCg",
   },
